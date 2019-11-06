@@ -6,6 +6,17 @@ users = [
           { username: "user5", password: "password5"},
         ]
 
+def auth_user(username, password, list_of_users)
+  list_of_users.each do |user_record|
+    if user_record[:username] == username && user_record[:password] == password
+      return user_record
+    else
+      return "Incorrect credentials"
+    end
+  end
+end
+
+
 puts "Welcome to the authenticator"
 50.times {print "-"}
 puts
@@ -19,14 +30,8 @@ while attempts < 4
   print "Password: "
   password = gets.chomp
 
-  users.each do |user|
-    if user[:username] == username && user[:password] == password
-      puts user
-      break
-    else
-      puts "Incorrect credentials"
-    end
-  end
+  authentication = auth_user(username, password, users)
+  puts authentication
 
   puts "Press n to quit or any other key to continue: "
   input = gets.chomp.downcase
