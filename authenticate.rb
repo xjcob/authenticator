@@ -22,11 +22,11 @@ while attempts < 4
   users.each do |user|
     if user[:username] == username && user[:password] == password
       puts user
+      break
     else
       puts "Incorrect credentials"
     end
   end
-
 
   puts "Press n to quit or any other key to continue: "
   input = gets.chomp.downcase
